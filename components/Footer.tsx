@@ -1,0 +1,108 @@
+'use client'
+
+import { Instagram, Twitter, Youtube } from 'lucide-react'
+
+const Footer = () => {
+  return (
+    <footer className="[background:#1C1333] py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* CryptoToken Inc. Section */}
+          <div>
+            <h3 className="text-white font-semibold text-lg mb-6">CryptoToken Inc.</h3>
+            <div className="flex space-x-4 mb-6">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white transition-colors duration-200"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white transition-colors duration-200"
+                aria-label="Twitter"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white transition-colors duration-200"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-5 h-5" />
+              </a>
+            </div>
+            <p className="text-gray-400 text-sm">
+              2024 CryptoToken. All rights reserved
+            </p>
+          </div>
+
+          {/* Quick Links Section */}
+          <div>
+            <h3 className="text-white font-semibold text-lg mb-6">Quick Links</h3>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                >
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                >
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                >
+                  FAQ
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Others Section */}
+          <div>
+            <h3 className="text-white font-semibold text-lg mb-6">Others</h3>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                >
+                  Terms of service
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                >
+                  Privacy policy
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
+export default Footer
