@@ -73,7 +73,7 @@ const Deposit = () => {
 
   if (selectedWallet) {
     return (
-      <div className="min-h-screen bg-gray-50 p-6 ml-64">
+      <div className="min-h-screen bg-gray-50 w-full md:ml-64 p-2 xs:p-4 sm:p-6">
         <Sidebar />
         {renderWalletComponent()}
       </div>
@@ -81,15 +81,15 @@ const Deposit = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6 ml-64">
+    <div className="min-h-screen bg-gray-50 w-full md:ml-64 p-2 xs:p-4 sm:p-6">
       <Sidebar />
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Choose Your Wallet</h1>
-          <p className="text-xl text-gray-600">Select your preferred wallet or exchange to deposit funds</p>
+      <div className="max-w-4xl mx-auto w-full">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">Choose Your Wallet</h1>
+          <p className="text-base xs:text-lg sm:text-xl text-gray-600">Select your preferred wallet or exchange to deposit funds</p>
         </div>
- 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+
+        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
           {walletOptions.map((wallet) => (
             <WalletCard
               key={wallet.name}
@@ -102,33 +102,33 @@ const Deposit = () => {
           ))}
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Why Choose These Wallets?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="bg-white rounded-2xl shadow-lg p-4 xs:p-6 sm:p-8">
+          <h2 className="text-lg xs:text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Why Choose These Wallets?</h2>
+          <div className="grid grid-cols-1 xs:grid-cols-2 gap-4 sm:gap-8">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">🔒 Security First</h3>
-              <p className="text-gray-600">All featured wallets use industry-leading security measures including multi-signature technology and cold storage.</p>
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">🔒 Security First</h3>
+              <p className="text-gray-600 text-xs sm:text-base">All featured wallets use industry-leading security measures including multi-signature technology and cold storage.</p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">⚡ Fast Transactions</h3>
-              <p className="text-gray-600">Experience quick deposit confirmations and seamless integration with our platform.</p>
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">⚡ Fast Transactions</h3>
+              <p className="text-gray-600 text-xs sm:text-base">Experience quick deposit confirmations and seamless integration with our platform.</p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">🌍 Global Access</h3>
-              <p className="text-gray-600">These wallets are available worldwide and support multiple cryptocurrencies.</p>
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">🌍 Global Access</h3>
+              <p className="text-gray-600 text-xs sm:text-base">These wallets are available worldwide and support multiple cryptocurrencies.</p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">📱 Mobile Friendly</h3>
-              <p className="text-gray-600">Access your funds on-the-go with mobile apps available for iOS and Android.</p>
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">📱 Mobile Friendly</h3>
+              <p className="text-gray-600 text-xs sm:text-base">Access your funds on-the-go with mobile apps available for iOS and Android.</p>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-4">Need Help?</h3>
-            <p className="text-xl mb-6">Our support team is available 24/7 to assist you with deposits and any questions.</p>
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-200">
+        <div className="mt-8 sm:mt-12 text-center px-2">
+          <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-4 xs:p-6 sm:p-8 text-white">
+            <h3 className="text-lg xs:text-xl sm:text-2xl font-bold mb-2 sm:mb-4">Need Help?</h3>
+            <p className="text-base xs:text-lg sm:text-xl mb-4 sm:mb-6">Our support team is available 24/7 to assist you with deposits and any questions.</p>
+            <button className="bg-white text-blue-600 px-6 xs:px-8 py-2 xs:py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-200 w-full xs:w-auto">
               Contact Support
             </button>
           </div>

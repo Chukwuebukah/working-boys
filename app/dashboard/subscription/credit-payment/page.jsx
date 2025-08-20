@@ -237,35 +237,34 @@ const SubscriptionPage = () => {
     }
   
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-12 px-4">
+  <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-6 xs:py-10 px-2 xs:px-4">
         <PaymentModal />
         
-        <div className="max-w-7xl mx-auto">
+  <div className="max-w-7xl mx-auto w-full">
           {/* Header */}
-          <div className="text-center mb-16">
-            <div className="flex justify-center items-center mb-6">
-              <div className="bg-yellow-100 p-3 rounded-full mr-4">
-                <Star className="w-8 h-8 text-yellow-500" />
+          <div className="text-center mb-8 xs:mb-12 sm:mb-16">
+            <div className="flex flex-col xs:flex-row justify-center items-center mb-4 xs:mb-6 gap-2 xs:gap-4">
+              <div className="bg-yellow-100 p-2 xs:p-3 rounded-full mr-0 xs:mr-4">
+                <Star className="w-6 xs:w-8 h-6 xs:h-8 text-yellow-500" />
               </div>
-              <h1 className="text-4xl font-bold text-gray-900">
+              <h1 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-900">
                 Choose Your Plan
               </h1>
             </div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base xs:text-lg sm:text-xl text-gray-600 max-w-xl sm:max-w-3xl mx-auto">
               Purchase stars to generate cryptocurrency payment receipts. Each receipt generation costs 5 stars.
             </p>
-            
             {/* Current Stars Display */}
-            <div className="mt-8 inline-flex items-center bg-white px-6 py-3 rounded-full shadow-md">
-              <Star className="w-5 h-5 text-yellow-500 mr-2" />
-              <span className="text-lg font-semibold text-gray-900">
+            <div className="mt-4 xs:mt-8 inline-flex items-center bg-white px-4 xs:px-6 py-2 xs:py-3 rounded-full shadow-md">
+              <Star className="w-4 xs:w-5 h-4 xs:h-5 text-yellow-500 mr-2" />
+              <span className="text-base xs:text-lg font-semibold text-gray-900">
                 Current Balance: {userStars} Stars
               </span>
             </div>
           </div>
   
           {/* Pricing Cards */}
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-4 xs:gap-6 sm:gap-8 max-w-5xl mx-auto">
             {plans.map((plan) => (
               <div
                 key={plan.id}
@@ -279,39 +278,39 @@ const SubscriptionPage = () => {
                   </div>
                 )}
                 
-                <div className={`bg-gradient-to-r ${plan.color} p-8 text-white ${plan.popular ? 'pt-12' : ''}`}>
+                <div className={`bg-gradient-to-r ${plan.color} p-4 xs:p-6 sm:p-8 text-white ${plan.popular ? 'pt-8 xs:pt-12' : ''}`}>
                   <div className="text-center">
-                    <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                    <div className="text-4xl font-bold mb-2">{plan.price}</div>
+                    <h3 className="text-lg xs:text-xl sm:text-2xl font-bold mb-1 xs:mb-2">{plan.name}</h3>
+                    <div className="text-2xl xs:text-3xl sm:text-4xl font-bold mb-1 xs:mb-2">{plan.price}</div>
                     <div className="flex items-center justify-center">
-                      <Star className="w-5 h-5 mr-1" />
-                      <span className="text-lg">{plan.stars} Stars</span>
+                      <Star className="w-4 xs:w-5 h-4 xs:h-5 mr-1" />
+                      <span className="text-base xs:text-lg">{plan.stars} Stars</span>
                     </div>
                   </div>
                 </div>
-  
-                <div className="p-8">
-                  <ul className="space-y-4 mb-8">
+
+                <div className="p-4 xs:p-6 sm:p-8">
+                  <ul className="space-y-2 xs:space-y-4 mb-4 xs:mb-8">
                     {plan.features.map((feature, index) => (
                       <li key={index} className="flex items-center">
-                        <Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                        <span className="text-gray-700">{feature}</span>
+                        <Check className="w-4 xs:w-5 h-4 xs:h-5 text-green-500 mr-2 xs:mr-3 flex-shrink-0" />
+                        <span className="text-gray-700 text-xs xs:text-base">{feature}</span>
                       </li>
                     ))}
                   </ul>
-  
+
                   <button
                     onClick={() => handlePurchase(plan.id)}
                     disabled={loading && selectedPlan === plan.id}
-                    className={`w-full bg-gradient-to-r ${plan.color} text-white py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center`}
+                    className={`w-full bg-gradient-to-r ${plan.color} text-white py-3 xs:py-4 px-4 xs:px-6 rounded-xl font-semibold text-base xs:text-lg transition-all duration-300 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center`}
                   >
                     {loading && selectedPlan === plan.id ? (
-                      <Loader2 className="w-6 h-6 animate-spin" />
+                      <Loader2 className="w-5 xs:w-6 h-5 xs:h-6 animate-spin" />
                     ) : (
                       <>
-                        <CreditCard className="w-5 h-5 mr-2" />
+                        <CreditCard className="w-4 xs:w-5 h-4 xs:h-5 mr-2" />
                         Pay with Paystack
-                        <ArrowRight className="w-5 h-5 ml-2" />
+                        <ArrowRight className="w-4 xs:w-5 h-4 xs:h-5 ml-2" />
                       </>
                     )}
                   </button>
@@ -321,60 +320,60 @@ const SubscriptionPage = () => {
           </div>
   
           {/* Payment Methods */}
-          <div className="mt-16 text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8">
+          <div className="mt-10 xs:mt-12 sm:mt-16 text-center px-2">
+            <h3 className="text-lg xs:text-xl sm:text-2xl font-bold text-gray-900 mb-4 xs:mb-8">
               Secure Payment with Paystack
             </h3>
-            <div className="flex justify-center items-center space-x-8 mb-8">
-              <div className="bg-white p-4 rounded-lg shadow-md">
-                <CreditCard className="w-8 h-8 text-blue-500 mx-auto mb-2" />
-                <p className="text-sm text-gray-600">Cards</p>
+            <div className="flex flex-col xs:flex-row justify-center items-center gap-4 xs:gap-8 mb-4 xs:mb-8">
+              <div className="bg-white p-3 xs:p-4 rounded-lg shadow-md w-full xs:w-auto">
+                <CreditCard className="w-6 xs:w-8 h-6 xs:h-8 text-blue-500 mx-auto mb-1 xs:mb-2" />
+                <p className="text-xs xs:text-sm text-gray-600">Cards</p>
               </div>
-              <div className="bg-white p-4 rounded-lg shadow-md">
-                <Shield className="w-8 h-8 text-green-500 mx-auto mb-2" />
-                <p className="text-sm text-gray-600">Bank Transfer</p>
+              <div className="bg-white p-3 xs:p-4 rounded-lg shadow-md w-full xs:w-auto">
+                <Shield className="w-6 xs:w-8 h-6 xs:h-8 text-green-500 mx-auto mb-1 xs:mb-2" />
+                <p className="text-xs xs:text-sm text-gray-600">Bank Transfer</p>
               </div>
-              <div className="bg-white p-4 rounded-lg shadow-md">
-                <Zap className="w-8 h-8 text-purple-500 mx-auto mb-2" />
-                <p className="text-sm text-gray-600">USSD</p>
+              <div className="bg-white p-3 xs:p-4 rounded-lg shadow-md w-full xs:w-auto">
+                <Zap className="w-6 xs:w-8 h-6 xs:h-8 text-purple-500 mx-auto mb-1 xs:mb-2" />
+                <p className="text-xs xs:text-sm text-gray-600">USSD</p>
               </div>
             </div>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-xs xs:text-sm">
               All payments are processed securely through Paystack. 
               Your payment information is encrypted and never stored on our servers.
             </p>
           </div>
   
           {/* Features Section */}
-          <div className="mt-20">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          <div className="mt-12 xs:mt-16 sm:mt-20">
+            <h2 className="text-xl xs:text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-6 xs:mb-12">
               Why Choose Our Service?
             </h2>
-            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-4 xs:gap-8 max-w-4xl mx-auto">
               <div className="text-center">
-                <div className="bg-blue-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <Shield className="w-8 h-8 text-blue-500" />
+                <div className="bg-blue-100 p-3 xs:p-4 rounded-full w-12 xs:w-16 h-12 xs:h-16 mx-auto mb-2 xs:mb-4 flex items-center justify-center">
+                  <Shield className="w-6 xs:w-8 h-6 xs:h-8 text-blue-500" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Secure & Reliable</h3>
-                <p className="text-gray-600">
+                <h3 className="text-base xs:text-xl font-semibold mb-1 xs:mb-2">Secure & Reliable</h3>
+                <p className="text-gray-600 text-xs xs:text-base">
                   Your data is protected with enterprise-grade security
                 </p>
               </div>
               <div className="text-center">
-                <div className="bg-green-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <Zap className="w-8 h-8 text-green-500" />
+                <div className="bg-green-100 p-3 xs:p-4 rounded-full w-12 xs:w-16 h-12 xs:h-16 mx-auto mb-2 xs:mb-4 flex items-center justify-center">
+                  <Zap className="w-6 xs:w-8 h-6 xs:h-8 text-green-500" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Instant Generation</h3>
-                <p className="text-gray-600">
+                <h3 className="text-base xs:text-xl font-semibold mb-1 xs:mb-2">Instant Generation</h3>
+                <p className="text-gray-600 text-xs xs:text-base">
                   Generate professional receipts in seconds
                 </p>
               </div>
               <div className="text-center">
-                <div className="bg-purple-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <Star className="w-8 h-8 text-purple-500" />
+                <div className="bg-purple-100 p-3 xs:p-4 rounded-full w-12 xs:w-16 h-12 xs:h-16 mx-auto mb-2 xs:mb-4 flex items-center justify-center">
+                  <Star className="w-6 xs:w-8 h-6 xs:h-8 text-purple-500" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Star System</h3>
-                <p className="text-gray-600">
+                <h3 className="text-base xs:text-xl font-semibold mb-1 xs:mb-2">Star System</h3>
+                <p className="text-gray-600 text-xs xs:text-base">
                   Pay once, use multiple times with our star system
                 </p>
               </div>

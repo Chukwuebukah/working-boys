@@ -53,29 +53,29 @@ const PaymentCallback = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center p-2 xs:p-4">
+      <div className="bg-white rounded-2xl shadow-xl p-4 xs:p-8 max-w-md w-full text-center">
         {status === 'loading' && (
           <>
-            <Loader2 className="w-16 h-16 text-blue-500 animate-spin mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Verifying Payment</h2>
-            <p className="text-gray-600">{message}</p>
+            <Loader2 className="w-10 xs:w-16 h-10 xs:h-16 text-blue-500 animate-spin mx-auto mb-2 xs:mb-4" />
+            <h2 className="text-lg xs:text-2xl font-bold text-gray-900 mb-1 xs:mb-2">Verifying Payment</h2>
+            <p className="text-gray-600 text-xs xs:text-base">{message}</p>
           </>
         )}
 
         {status === 'success' && (
           <>
-            <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Payment Successful!</h2>
-            <p className="text-gray-600 mb-4">{message}</p>
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
-              <p className="text-green-800 font-semibold">
+            <CheckCircle className="w-10 xs:w-16 h-10 xs:h-16 text-green-500 mx-auto mb-2 xs:mb-4" />
+            <h2 className="text-lg xs:text-2xl font-bold text-gray-900 mb-1 xs:mb-2">Payment Successful!</h2>
+            <p className="text-gray-600 mb-2 xs:mb-4 text-xs xs:text-base">{message}</p>
+            <div className="bg-green-50 border border-green-200 rounded-lg p-2 xs:p-4 mb-4 xs:mb-6">
+              <p className="text-green-800 font-semibold text-xs xs:text-base">
                 {stars} stars added to your account!
               </p>
             </div>
             <button
               onClick={handleGoToDashboard}
-              className="w-full bg-green-500 text-white py-3 px-6 rounded-xl font-semibold hover:bg-green-600 transition-colors flex items-center justify-center"
+              className="w-full bg-green-500 text-white py-2 xs:py-3 px-4 xs:px-6 rounded-xl font-semibold hover:bg-green-600 transition-colors flex items-center justify-center text-xs xs:text-base"
             >
               Go to Dashboard
             </button>
@@ -84,21 +84,21 @@ const PaymentCallback = () => {
 
         {status === 'error' && (
           <>
-            <XCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Payment Failed</h2>
-            <p className="text-gray-600 mb-6">{message}</p>
-            <div className="space-y-3">
+            <XCircle className="w-10 xs:w-16 h-10 xs:h-16 text-red-500 mx-auto mb-2 xs:mb-4" />
+            <h2 className="text-lg xs:text-2xl font-bold text-gray-900 mb-1 xs:mb-2">Payment Failed</h2>
+            <p className="text-gray-600 mb-4 xs:mb-6 text-xs xs:text-base">{message}</p>
+            <div className="space-y-2 xs:space-y-3">
               <button
                 onClick={handleTryAgain}
-                className="w-full bg-blue-500 text-white py-3 px-6 rounded-xl font-semibold hover:bg-blue-600 transition-colors"
+                className="w-full bg-blue-500 text-white py-2 xs:py-3 px-4 xs:px-6 rounded-xl font-semibold hover:bg-blue-600 transition-colors text-xs xs:text-base"
               >
                 Try Again
               </button>
               <button
                 onClick={handleGoToDashboard}
-                className="w-full bg-gray-500 text-white py-3 px-6 rounded-xl font-semibold hover:bg-gray-600 transition-colors flex items-center justify-center"
+                className="w-full bg-gray-500 text-white py-2 xs:py-3 px-4 xs:px-6 rounded-xl font-semibold hover:bg-gray-600 transition-colors flex items-center justify-center text-xs xs:text-base"
               >
-                <ArrowLeft className="w-5 h-5 mr-2" />
+                <ArrowLeft className="w-4 xs:w-5 h-4 xs:h-5 mr-2" />
                 Go to Dashboard
               </button>
             </div>

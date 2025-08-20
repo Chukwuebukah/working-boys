@@ -4,13 +4,13 @@ import { Instagram, Twitter, Youtube } from 'lucide-react'
 
 const Footer = () => {
   return (
-    <footer className="[background:#1C1333] py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="[background:#1C1333] py-8 sm:py-12 px-2 sm:px-4">
+      <div className="max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {/* CryptoToken Inc. Section */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-6">CryptoToken Inc.</h3>
-            <div className="flex space-x-4 mb-6">
+            <h3 className="text-white font-semibold text-base sm:text-lg mb-4 sm:mb-6">CryptoToken Inc.</h3>
+            <div className="flex space-x-4 mb-4 sm:mb-6">
               <a
                 href="#"
                 className="text-gray-400 hover:text-white transition-colors duration-200"
@@ -33,19 +33,19 @@ const Footer = () => {
                 <Youtube className="w-5 h-5" />
               </a>
             </div>
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-400 text-xs sm:text-sm">
               2024 CryptoToken. All rights reserved
             </p>
           </div>
 
           {/* Quick Links Section */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-6">Quick Links</h3>
-            <ul className="space-y-3">
+            <h3 className="text-white font-semibold text-base sm:text-lg mb-4 sm:mb-6">Quick Links</h3>
+            <ul className="space-y-2 sm:space-y-3">
               <li>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                  className="text-gray-400 hover:text-white transition-colors duration-200 text-xs sm:text-sm"
                 >
                   About
                 </a>
@@ -79,12 +79,12 @@ const Footer = () => {
 
           {/* Others Section */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-6">Others</h3>
-            <ul className="space-y-3">
+            <h3 className="text-white font-semibold text-base sm:text-lg mb-4 sm:mb-6">Others</h3>
+            <ul className="space-y-2 sm:space-y-3">
               <li>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+                  className="text-gray-400 hover:text-white transition-colors duration-200 text-xs sm:text-sm"
                 >
                   Terms of service
                 </a>

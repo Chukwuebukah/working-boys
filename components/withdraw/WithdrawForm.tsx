@@ -194,46 +194,46 @@ const WithdrawForm = ({ wallet, onBack }: WalletFormProps) => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <div className="flex items-center mb-8">
+    <div className="max-w-2xl mx-auto px-2 xs:px-4 sm:px-6">
+      <div className="flex items-center mb-4 xs:mb-6 sm:mb-8">
         <button
           onClick={onBack}
           className="p-2 hover:bg-gray-200 rounded-lg transition-colors duration-200 mr-4"
         >
-          <ArrowLeft className="w-6 h-6 text-gray-600" />
+          <ArrowLeft className="w-5 xs:w-6 h-5 xs:h-6 text-gray-600" />
         </button>
       </div>
 
       {/* Stars Balance Display */}
-      <div className="bg-gradient-to-r from-yellow-100 to-orange-100 rounded-2xl p-6 mb-6 border border-yellow-200">
-        <div className="flex items-center justify-between">
+      <div className="bg-gradient-to-r from-yellow-100 to-orange-100 rounded-xl xs:rounded-2xl p-4 xs:p-6 mb-4 xs:mb-6 border border-yellow-200">
+        <div className="flex items-center justify-between flex-col xs:flex-row gap-3 xs:gap-0">
           <div className="flex items-center">
-            <Star className="w-6 h-6 text-yellow-500 mr-2" />
+            <Star className="w-5 xs:w-6 h-5 xs:h-6 text-yellow-500 mr-2" />
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">Your Star Balance</h3>
-              <p className="text-sm text-gray-600">Each receipt generation costs 5 stars</p>
+              <h3 className="text-base xs:text-lg font-semibold text-gray-900">Your Star Balance</h3>
+              <p className="text-xs xs:text-sm text-gray-600">Each receipt generation costs 5 stars</p>
             </div>
           </div>
-          <div className="text-right">
-            <div className="text-2xl font-bold text-yellow-600">{userStars}</div>
-            <div className="text-sm text-gray-500">stars available</div>
+          <div className="text-center xs:text-right">
+            <div className="text-xl xs:text-2xl font-bold text-yellow-600">{userStars}</div>
+            <div className="text-xs xs:text-sm text-gray-500">stars available</div>
           </div>
         </div>
       </div>
 
       {/* Insufficient Stars Warning */}
       {showInsufficientStars && (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-6 mb-6">
-          <div className="flex items-start">
-            <AlertTriangle className="w-6 h-6 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+        <div className="bg-red-50 border border-red-200 rounded-xl p-4 xs:p-6 mb-4 xs:mb-6">
+          <div className="flex items-start flex-col xs:flex-row">
+            <AlertTriangle className="w-5 xs:w-6 h-5 xs:h-6 text-red-500 mr-0 xs:mr-3 mb-2 xs:mb-0 mt-0.5 flex-shrink-0" />
             <div>
-              <h3 className="text-lg font-semibold text-red-900 mb-2">Insufficient Stars</h3>
-              <p className="text-red-700 mb-4">
+              <h3 className="text-base xs:text-lg font-semibold text-red-900 mb-2">Insufficient Stars</h3>
+              <p className="text-red-700 mb-4 text-sm xs:text-base">
                 You need at least 5 stars to generate a receipt. You currently have {userStars} stars.
               </p>
               <button
                 onClick={() => window.location.href = '/subscription'}
-                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
+                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm xs:text-base"
               >
                 Purchase Stars
               </button>
@@ -242,21 +242,21 @@ const WithdrawForm = ({ wallet, onBack }: WalletFormProps) => {
         </div>
       )}
 
-      <div className="bg-white rounded-2xl shadow-lg p-8 mb-6">
-        <div className="flex items-center mb-6">
-          <div className={`bg-gradient-to-r ${wallet.color} p-4 rounded-2xl text-white text-2xl mr-4`}>
+      <div className="bg-white rounded-xl xs:rounded-2xl shadow-lg p-4 xs:p-6 sm:p-8 mb-4 xs:mb-6">
+        <div className="flex items-center mb-4 xs:mb-6 flex-col xs:flex-row text-center xs:text-left">
+          <div className={`bg-gradient-to-r ${wallet.color} p-3 xs:p-4 rounded-xl xs:rounded-2xl text-white text-xl xs:text-2xl mr-0 xs:mr-4 mb-3 xs:mb-0`}>
             {wallet.icon}
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">{wallet.name}</h2>
-            <p className="text-gray-600">{wallet.description}</p>
+            <h2 className="text-xl xs:text-2xl font-bold text-gray-900">{wallet.name}</h2>
+            <p className="text-gray-600 text-sm xs:text-base">{wallet.description}</p>
           </div>
         </div>
 
         {/* Deposit Form UI */}
-        <form className="flex flex-col items-center justify-center bg-gradient-to-br from-gray-100 to-gray-300 rounded-2xl py-10 px-6 mb-8 w-full max-w-lg mx-auto gap-6 shadow-lg border border-gray-200">
+        <form className="flex flex-col items-center justify-center bg-gradient-to-br from-gray-100 to-gray-300 rounded-xl xs:rounded-2xl py-6 xs:py-8 sm:py-10 px-4 xs:px-6 mb-6 xs:mb-8 w-full max-w-lg mx-auto gap-4 xs:gap-6 shadow-lg border border-gray-200">
           <div className="w-full flex flex-col gap-1">
-            <label className="text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="amount">
+            <label className="text-sm xs:text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="amount">
               <DollarSign className="w-4 h-4 text-blue-500" /> Amount
             </label>
             <input
@@ -264,13 +264,13 @@ const WithdrawForm = ({ wallet, onBack }: WalletFormProps) => {
               name="amount"
               type="number"
               placeholder="Enter amount"
-              className="bg-white rounded-xl px-4 py-3 shadow-inner text-gray-900 w-full border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="bg-white rounded-xl px-3 xs:px-4 py-2 xs:py-3 shadow-inner text-gray-900 w-full border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm xs:text-base"
               value={formData.amount}
               onChange={handleChange}
             />
           </div>
           <div className="w-full flex flex-col gap-1">
-            <label className="text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="currency">
+            <label className="text-sm xs:text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="currency">
               <CreditCard className="w-4 h-4 text-green-500" /> Currency
             </label>
             <input
@@ -278,13 +278,13 @@ const WithdrawForm = ({ wallet, onBack }: WalletFormProps) => {
               name="currency"
               type="text"
               placeholder="Crypto currency"
-              className="bg-white rounded-xl px-4 py-3 shadow-inner text-gray-900 w-full border border-green-200 focus:outline-none focus:ring-2 focus:ring-green-400"
+              className="bg-white rounded-xl px-3 xs:px-4 py-2 xs:py-3 shadow-inner text-gray-900 w-full border border-green-200 focus:outline-none focus:ring-2 focus:ring-green-400 text-sm xs:text-base"
               value={formData.currency}
               onChange={handleChange}
             />
           </div>
           <div className="w-full flex flex-col gap-1">
-            <label className="text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="wallet">
+            <label className="text-sm xs:text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="wallet">
               <Banknote className="w-4 h-4 text-yellow-500" /> Wallet Address
             </label>
             <input
@@ -292,7 +292,7 @@ const WithdrawForm = ({ wallet, onBack }: WalletFormProps) => {
               name="wallet"
               type="text"
               placeholder="Wallet address"
-              className="bg-white rounded-xl px-4 py-3 shadow-inner text-gray-900 w-full border border-yellow-200 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className="bg-white rounded-xl px-3 xs:px-4 py-2 xs:py-3 shadow-inner text-gray-900 w-full border border-yellow-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm xs:text-base"
               value={formData.wallet}
               onChange={handleChange}
             />

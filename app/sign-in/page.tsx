@@ -35,9 +35,9 @@ const Page = () => {
   };
 
   return (
-    <div className="flex flex-row h-screen">
+    <div className="flex flex-col md:flex-row h-screen">
       {/* Left Side */}
-      <div className="bg-[#1C1333] w-[40%] flex flex-col items-center justify-center gap-8 p-6">
+      <div className="bg-[#1C1333] w-full md:w-[40%] flex flex-col items-center justify-center gap-8 p-6">
         <h1 className="text-2xl text-white mb-4 font-bold">CRYPTOTOKEN</h1>
         <img
           className="w-[20%] max-w-[120px]"
@@ -58,13 +58,13 @@ const Page = () => {
       </div>
 
       {/* Right Side */}
-      <div className="w-[60%] flex flex-col">
+      <div className="w-full md:w-[60%] flex flex-col">
         {/* Top Nav */}
-        <div className="flex justify-between items-center px-10 py-6">
+        <div className="flex flex-col xs:flex-row justify-between items-center px-4 xs:px-8 sm:px-10 py-4 xs:py-6 gap-2 xs:gap-0">
           <button className="text-[#424242] px-4 py-2 rounded hover:bg-gray-300 transition">
             <a href="/">Return Home</a>
           </button>
-          <p className="text-center text-[#424242]">
+          <p className="text-center text-[#424242] text-sm xs:text-base">
             Not A User?{' '}
             <a href="/sign-up" className="text-black hover:underline">
               JOIN NOW
@@ -74,11 +74,11 @@ const Page = () => {
 
         {/* Login Form */}
         <form
-          className="flex flex-1 flex-col items-center justify-center gap-8"
+          className="flex flex-1 flex-col items-center justify-center gap-6 xs:gap-8"
           onSubmit={handleSubmit}
         >
-          <h1 className="text-black text-4xl font-bold">LOG IN</h1>
-          <div className="w-full max-w-md px-6 space-y-6">
+          <h1 className="text-black text-3xl xs:text-4xl font-bold">LOG IN</h1>
+          <div className="w-full max-w-md px-4 xs:px-6 space-y-4 xs:space-y-6">
             {/* Email */}
             <label className="input validator flex items-center gap-2 border rounded px-3 py-2">
               <svg
@@ -139,7 +139,7 @@ const Page = () => {
             <button
               disabled={isLoading}
               type="submit"
-              className="w-[80%] bg-[#24243E] text-white font-bold p-4"
+              className="w-full xs:w-[80%] bg-[#24243E] text-white font-bold p-3 xs:p-4"
             >
               {isLoading ? 'Loading...' : 'PROCEED →'}
             </button>
@@ -149,7 +149,7 @@ const Page = () => {
               <p className="text-red-500 text-sm text-center">{error}</p>
             )}
 
-            <div className=" text-center">
+            <div className="text-center">
               <a href='/forget-password' >Forgot Password?</a>
             </div>
           </div>

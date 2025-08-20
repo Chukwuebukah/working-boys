@@ -27,31 +27,32 @@ export default function VerifyOTP() {
     };
 
   return (
-    <div className="flex flex-row h-screen justify-center items-center ">
-      <div className="w-full max-w-md px-6 space-y-6">
-            {/* New Password */}
-            <input
-              type="otp"
-              placeholder="your otp"
-              required
-              className="w-full border rounded px-3 py-2"
-              value={otp} onChange={(e) => setOtp(e.target.value)} 
-            />
-            {/* Confirm Password */}
-            {/* Submit Button */}
-            <button onClick={handleVerify}
-              disabled={isLoading}
-              type="submit"
-              className="w-[80%] bg-[#1C1333] text-white font-bold p-4"
-            >
-              {isLoading ? "Loading..." : "Verify OTP"}
-              
-            </button>
-            {/* Error/Success Display */}
-            {error && (
-              <p className="text-red-500 text-sm text-center">{error}</p>
-            )}
-          </div>
+    <div className="flex flex-col justify-center items-center h-screen px-4">
+      <div className="w-full max-w-md space-y-4 xs:space-y-6">
+        <h1 className="text-xl xs:text-2xl font-bold text-center mb-4 xs:mb-6">Verify OTP</h1>
+        {/* OTP Input */}
+        <input
+          type="text"
+          placeholder="Enter your OTP"
+          required
+          className="w-full border rounded px-3 py-2 text-center text-lg tracking-wider"
+          value={otp} 
+          onChange={(e) => setOtp(e.target.value)} 
+        />
+        {/* Submit Button */}
+        <button 
+          onClick={handleVerify}
+          disabled={isLoading}
+          type="submit"
+          className="w-full bg-[#1C1333] text-white font-bold p-3 xs:p-4 rounded"
+        >
+          {isLoading ? "Loading..." : "Verify OTP"}
+        </button>
+        {/* Error Display */}
+        {error && (
+          <p className="text-red-500 text-sm text-center">{error}</p>
+        )}
+      </div>
     </div>
   )
 }

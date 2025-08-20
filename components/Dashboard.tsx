@@ -33,7 +33,7 @@ const userInfo = {
   referralLink: 'https://cryptotoken.com/?ref=JohnDoe',
 };
 
-// Sidebar Component
+// Sidebar Component (responsive)
 const Sidebar = () => {
   const pathname = usePathname();
   const links = [
@@ -43,30 +43,73 @@ const Sidebar = () => {
     { name: 'Subscription', href: '/dashboard/subscription', icon: CreditCard },
     { name: 'Settings', href: '/dashboard/settings', icon: Settings },
   ];
+  const [open, setOpen] = useState(false);
 
   return (
-    <aside
-      className="fixed left-0 top-0 h-full w-64 shadow-lg z-40 text-white"
-      style={{ backgroundColor: '#1C1333' }}
-    >
-      <div className="p-6 border-b border-gray-700">
-        <h2 className="text-xl font-bold">CryptoToken</h2>
-      </div>
-      <nav className="flex flex-col mt-4">
-        {links.map(({ name, href, icon: Icon }) => (
-          <Link
-            key={name}
-            href={href}
-            className={`flex items-center px-6 py-3 text-sm hover:bg-[#29224b] transition-colors ${
-              pathname === href ? 'bg-[#29224b]' : ''
-            }`}
+    <>
+      {/* Mobile Hamburger */}
+      <button
+        className="md:hidden fixed top-4 left-4 z-50 bg-[#1C1333] p-2 rounded shadow-lg text-white"
+        onClick={() => setOpen(true)}
+        aria-label="Open sidebar"
+      >
+        <LayoutDashboard className="w-6 h-6" />
+      </button>
+      {/* Sidebar for desktop */}
+      <aside
+        className="hidden md:block fixed left-0 top-0 h-full w-64 shadow-lg z-40 text-white"
+        style={{ backgroundColor: '#1C1333' }}
+      >
+        <div className="p-6 border-b border-gray-700">
+          <h2 className="text-xl font-bold">CryptoToken</h2>
+        </div>
+        <nav className="flex flex-col mt-4">
+          {links.map(({ name, href, icon: Icon }) => (
+            <Link
+              key={name}
+              href={href}
+              className={`flex items-center px-6 py-3 text-sm hover:bg-[#29224b] transition-colors ${
+                pathname === href ? 'bg-[#29224b]' : ''
+              }`}
+            >
+              <Icon className="w-4 h-4 mr-3" />
+              {name}
+            </Link>
+          ))}
+        </nav>
+      </aside>
+      {/* Sidebar Drawer for mobile */}
+      {open && (
+        <div className="fixed inset-0 z-50 bg-black/60 flex">
+          <aside
+            className="w-64 h-full bg-[#1C1333] shadow-lg text-white flex flex-col"
           >
-            <Icon className="w-4 h-4 mr-3" />
-            {name}
-          </Link>
-        ))}
-      </nav>
-    </aside>
+            <div className="p-6 border-b border-gray-700 flex items-center justify-between">
+              <h2 className="text-xl font-bold">CryptoToken</h2>
+              <button onClick={() => setOpen(false)} aria-label="Close sidebar">
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+            <nav className="flex flex-col mt-4">
+              {links.map(({ name, href, icon: Icon }) => (
+                <Link
+                  key={name}
+                  href={href}
+                  className={`flex items-center px-6 py-3 text-sm hover:bg-[#29224b] transition-colors ${
+                    pathname === href ? 'bg-[#29224b]' : ''
+                  }`}
+                  onClick={() => setOpen(false)}
+                >
+                  <Icon className="w-4 h-4 mr-3" />
+                  {name}
+                </Link>
+              ))}
+            </nav>
+          </aside>
+          <div className="flex-1" onClick={() => setOpen(false)} />
+        </div>
+      )}
+    </>
   );
 };
 
@@ -141,14 +184,14 @@ const Dashboard = () => {
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
 
-      <div className="ml-64 p-6 w-full">
+      <div className="w-full md:ml-64 p-2 xs:p-4 sm:p-6">
         {/* Profile top right */}
         <div className="flex justify-end mb-4">
-          <div className="flex items-center bg-white px-4 py-2 rounded-full shadow border space-x-2">
-            <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center font-semibold text-gray-700">
+          <div className="flex items-center bg-white px-3 xs:px-4 py-2 rounded-full shadow border space-x-2">
+            <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center font-semibold text-gray-700 text-xs xs:text-sm">
               {currentUser?.email?.slice(0, 2).toUpperCase()}
             </div>
-            <div className="flex items-center text-yellow-500 text-sm font-medium space-x-1">
+            <div className="flex items-center text-yellow-500 text-xs xs:text-sm font-medium space-x-1">
               <Star className="w-4 h-4" />
               <span>{loading ? '...' : userStars}</span>
             </div>
@@ -156,14 +199,14 @@ const Dashboard = () => {
         </div>
 
         {/* Breadcrumb */}
-        <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-6">
+  <nav className="flex items-center space-x-2 text-xs xs:text-sm text-gray-600 mb-4 sm:mb-6">
           <Home className="w-4 h-4" />
           <ChevronRight className="w-4 h-4" />
           <span className="text-gray-900 font-medium">Dashboard</span>
         </nav>
 
         {/* Online Status Card */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
+  <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-4 sm:mb-6">
           <div className="p-4 border-b border-gray-100">
             <h5 className="text-blue-600 text-sm font-medium flex items-center">
               Online Status <Circle className="w-3 h-3 ml-2 text-green-500 fill-current" />
@@ -179,7 +222,7 @@ const Dashboard = () => {
         </div>
 
         {/* Stars Balance Card */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
+  <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-4 sm:mb-6">
           <div className="p-4 border-b border-gray-100">
             <h5 className="text-yellow-600 text-sm font-medium flex items-center">
               <Star className="w-4 h-4 mr-2" />
@@ -209,9 +252,9 @@ const Dashboard = () => {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-6 mb-4 sm:mb-6">
           {/* Left Column - Stats Cards */}
-          <div className="lg:col-span-3 space-y-4">
+          <div className="lg:col-span-3 space-y-3 sm:space-y-4">
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
               <div className="text-xs font-medium text-gray-600 uppercase tracking-wide mb-2">
                 Total Coins <ChevronRight className="inline w-3 h-3 ml-1" />
@@ -225,7 +268,7 @@ const Dashboard = () => {
           </div>
 
           {/* Middle Column - More Stats */}
-          <div className="lg:col-span-3 space-y-4">
+          <div className="lg:col-span-3 space-y-3 sm:space-y-4">
             <StatCard 
               title="Referral Earnings"
               amount={userInfo.referralEarnings}
@@ -274,31 +317,31 @@ const Dashboard = () => {
                 </button>
               </div>
 
-              <div className="p-6">
+              <div className="p-2 xs:p-4 sm:p-6">
                 <div className="overflow-x-auto">
-                  <table className="min-w-full text-sm text-left">
+                  <table className="min-w-full text-xs xs:text-sm text-left">
                     <thead className="border-b border-gray-200 bg-gray-50 text-gray-600">
                       <tr>
-                        <th className="px-4 py-2">Coin</th>
-                        <th className="px-4 py-2">Price</th>
-                        <th className="px-4 py-2">24h Change</th>
+                        <th className="px-2 xs:px-4 py-2">Coin</th>
+                        <th className="px-2 xs:px-4 py-2">Price</th>
+                        <th className="px-2 xs:px-4 py-2">24h Change</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr className="border-b">
-                        <td className="px-4 py-3 font-medium">Bitcoin (BTC)</td>
-                        <td className="px-4 py-3 text-gray-900">$61,000</td>
-                        <td className="px-4 py-3 text-green-600">+2.5%</td>
+                        <td className="px-2 xs:px-4 py-3 font-medium">Bitcoin (BTC)</td>
+                        <td className="px-2 xs:px-4 py-3 text-gray-900">$61,000</td>
+                        <td className="px-2 xs:px-4 py-3 text-green-600">+2.5%</td>
                       </tr>
                       <tr className="border-b">
-                        <td className="px-4 py-3 font-medium">Ethereum (ETH)</td>
-                        <td className="px-4 py-3 text-gray-900">$3,400</td>
-                        <td className="px-4 py-3 text-red-600">-1.2%</td>
+                        <td className="px-2 xs:px-4 py-3 font-medium">Ethereum (ETH)</td>
+                        <td className="px-2 xs:px-4 py-3 text-gray-900">$3,400</td>
+                        <td className="px-2 xs:px-4 py-3 text-red-600">-1.2%</td>
                       </tr>
                       <tr className="border-b">
-                        <td className="px-4 py-3 font-medium">Solana (SOL)</td>
-                        <td className="px-4 py-3 text-gray-900">$132</td>
-                        <td className="px-4 py-3 text-green-600">+4.1%</td>
+                        <td className="px-2 xs:px-4 py-3 font-medium">Solana (SOL)</td>
+                        <td className="px-2 xs:px-4 py-3 text-gray-900">$132</td>
+                        <td className="px-2 xs:px-4 py-3 text-green-600">+4.1%</td>
                       </tr>
                     </tbody>
                   </table>
@@ -311,12 +354,12 @@ const Dashboard = () => {
         {/* Tab System */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200">
           <div className="border-b border-gray-200">
-            <nav className="flex space-x-8 px-6">
+            <nav className="flex flex-wrap gap-2 xs:gap-4 px-2 xs:px-6">
               {['Profile', 'Investments', 'Transactions', 'Settings'].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab.toLowerCase())}
-                  className={`py-4 px-2 border-b-2 font-medium text-sm transition-colors ${
+                  className={`py-2 xs:py-4 px-2 border-b-2 font-medium text-xs xs:text-sm transition-colors ${
                     activeTab === tab.toLowerCase()
                       ? 'border-blue-500 text-blue-600'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
@@ -327,11 +370,11 @@ const Dashboard = () => {
               ))}
             </nav>
           </div>
-          <div className="p-6">
+          <div className="p-2 xs:p-4 sm:p-6">
             {activeTab === 'profile' && (
               <div>
                 <h3 className="text-lg font-medium text-gray-900 mb-4">Profile Information</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Username</label>
                     <p className="text-gray-900">{currentUser?.username}</p>

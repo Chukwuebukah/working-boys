@@ -192,46 +192,46 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <div className="flex items-center mb-8">
+    <div className="max-w-2xl mx-auto px-2 xs:px-4 sm:px-6">
+      <div className="flex items-center mb-4 xs:mb-6 sm:mb-8">
         <button
           onClick={onBack}
           className="p-2 hover:bg-gray-200 rounded-lg transition-colors duration-200 mr-4"
         >
-          <ArrowLeft className="w-6 h-6 text-gray-600" />
+          <ArrowLeft className="w-5 xs:w-6 h-5 xs:h-6 text-gray-600" />
         </button>
       </div>
 
        {/* Stars Balance Display */}
-       <div className="bg-gradient-to-r from-yellow-100 to-orange-100 rounded-2xl p-6 mb-6 border border-yellow-200">
-        <div className="flex items-center justify-between">
+       <div className="bg-gradient-to-r from-yellow-100 to-orange-100 rounded-xl xs:rounded-2xl p-4 xs:p-6 mb-4 xs:mb-6 border border-yellow-200">
+        <div className="flex items-center justify-between flex-col xs:flex-row gap-3 xs:gap-0">
           <div className="flex items-center">
-            <Star className="w-6 h-6 text-yellow-500 mr-2" />
+            <Star className="w-5 xs:w-6 h-5 xs:h-6 text-yellow-500 mr-2" />
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">Your Star Balance</h3>
-              <p className="text-sm text-gray-600">Each receipt generation costs 5 stars</p>
+              <h3 className="text-base xs:text-lg font-semibold text-gray-900">Your Star Balance</h3>
+              <p className="text-xs xs:text-sm text-gray-600">Each receipt generation costs 5 stars</p>
             </div>
           </div>
-          <div className="text-right">
-            <div className="text-2xl font-bold text-yellow-600">{userStars}</div>
-            <div className="text-sm text-gray-500">stars available</div>
+          <div className="text-center xs:text-right">
+            <div className="text-xl xs:text-2xl font-bold text-yellow-600">{userStars}</div>
+            <div className="text-xs xs:text-sm text-gray-500">stars available</div>
           </div>
         </div>
       </div>
 
        {/* Insufficient Stars Warning */}
        {showInsufficientStars && (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-6 mb-6">
-          <div className="flex items-start">
-            <AlertTriangle className="w-6 h-6 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+        <div className="bg-red-50 border border-red-200 rounded-xl p-4 xs:p-6 mb-4 xs:mb-6">
+          <div className="flex items-start flex-col xs:flex-row">
+            <AlertTriangle className="w-5 xs:w-6 h-5 xs:h-6 text-red-500 mr-0 xs:mr-3 mb-2 xs:mb-0 mt-0.5 flex-shrink-0" />
             <div>
-              <h3 className="text-lg font-semibold text-red-900 mb-2">Insufficient Stars</h3>
-              <p className="text-red-700 mb-4">
+              <h3 className="text-base xs:text-lg font-semibold text-red-900 mb-2">Insufficient Stars</h3>
+              <p className="text-red-700 mb-4 text-sm xs:text-base">
                 You need at least 5 stars to generate a receipt. You currently have {userStars} stars.
               </p>
               <button
                 onClick={() => window.location.href = '/subscription'}
-                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
+                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm xs:text-base"
               >
                 Purchase Stars
               </button>
@@ -240,21 +240,21 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
         </div>
       )}
 
-      <div className="bg-white rounded-2xl shadow-lg p-8 mb-6">
-        <div className="flex items-center mb-6">
-          <div className={`bg-gradient-to-r ${wallet.color} p-4 rounded-2xl text-white text-2xl mr-4`}>
+      <div className="bg-white rounded-xl xs:rounded-2xl shadow-lg p-4 xs:p-6 sm:p-8 mb-4 xs:mb-6">
+        <div className="flex items-center mb-4 xs:mb-6 flex-col xs:flex-row text-center xs:text-left">
+          <div className={`bg-gradient-to-r ${wallet.color} p-3 xs:p-4 rounded-xl xs:rounded-2xl text-white text-xl xs:text-2xl mr-0 xs:mr-4 mb-3 xs:mb-0`}>
             {wallet.icon}
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">{wallet.name}</h2>
-            <p className="text-gray-600">{wallet.description}</p>
+            <h2 className="text-xl xs:text-2xl font-bold text-gray-900">{wallet.name}</h2>
+            <p className="text-gray-600 text-sm xs:text-base">{wallet.description}</p>
           </div>
         </div>
 
         {/* Deposit Form UI */}
-        <form className="flex flex-col items-center justify-center bg-gradient-to-br from-gray-100 to-gray-300 rounded-2xl py-10 px-6 mb-8 w-full max-w-lg mx-auto gap-6 shadow-lg border border-gray-200">
+        <form className="flex flex-col items-center justify-center bg-gradient-to-br from-gray-100 to-gray-300 rounded-xl xs:rounded-2xl py-6 xs:py-8 sm:py-10 px-4 xs:px-6 mb-6 xs:mb-8 w-full max-w-lg mx-auto gap-4 xs:gap-6 shadow-lg border border-gray-200">
           <div className="w-full flex flex-col gap-1">
-            <label className="text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="amount">
+            <label className="text-sm xs:text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="amount">
               <DollarSign className="w-4 h-4 text-blue-500" /> Amount
             </label>
             <input
@@ -262,13 +262,13 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
               name="amount"
               type="number"
               placeholder="Enter amount"
-              className="bg-white rounded-xl px-4 py-3 shadow-inner text-gray-900 w-full border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="bg-white rounded-xl px-3 xs:px-4 py-2 xs:py-3 shadow-inner text-gray-900 w-full border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm xs:text-base"
               value={formData.amount}
               onChange={handleChange}
             />
           </div>
           <div className="w-full flex flex-col gap-1">
-            <label className="text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="currency">
+            <label className="text-sm xs:text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="currency">
               <CreditCard className="w-4 h-4 text-green-500" /> Currency
             </label>
             <input
@@ -276,13 +276,13 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
               name="currency"
               type="text"
               placeholder="Crypto currency"
-              className="bg-white rounded-xl px-4 py-3 shadow-inner text-gray-900 w-full border border-green-200 focus:outline-none focus:ring-2 focus:ring-green-400"
+              className="bg-white rounded-xl px-3 xs:px-4 py-2 xs:py-3 shadow-inner text-gray-900 w-full border border-green-200 focus:outline-none focus:ring-2 focus:ring-green-400 text-sm xs:text-base"
               value={formData.currency}
               onChange={handleChange}
             />
           </div>
           <div className="w-full flex flex-col gap-1">
-            <label className="text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="wallet">
+            <label className="text-sm xs:text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="wallet">
               <Banknote className="w-4 h-4 text-yellow-500" /> Wallet Address
             </label>
             <input
@@ -290,7 +290,7 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
               name="wallet"
               type="text"
               placeholder="Wallet address"
-              className="bg-white rounded-xl px-4 py-3 shadow-inner text-gray-900 w-full border border-yellow-200 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className="bg-white rounded-xl px-3 xs:px-4 py-2 xs:py-3 shadow-inner text-gray-900 w-full border border-yellow-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm xs:text-base"
               value={formData.wallet}
               onChange={handleChange}
             />
@@ -298,14 +298,14 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
           {/* Bybit only input */}
           {wallet.name === 'Bybit' && (
             <div className="w-full flex flex-col gap-1">
-              <label className="text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="bybitTag">
+              <label className="text-sm xs:text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="bybitTag">
                 <CreditCard className="w-4 h-4 text-orange-500" /> Chain type
               </label>
               <input
                 id="bybitTag"
                 type="text"
                 placeholder="Chain type"
-                className="bg-white rounded-xl px-4 py-3 shadow-inner text-gray-900 w-full border border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="bg-white rounded-xl px-3 xs:px-4 py-2 xs:py-3 shadow-inner text-gray-900 w-full border border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-400 text-sm xs:text-base"
                 value={bybitTag}
                 onChange={handleBybitTagChange}
               />
@@ -314,14 +314,14 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
 
            {wallet.name === 'Bybit' && (
             <div className="w-full flex flex-col gap-1">
-              <label className="text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="txTag">
+              <label className="text-sm xs:text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="txTag">
                 <CreditCard className="w-4 h-4 text-orange-500" /> TXID
               </label>
               <input
                 id="txTag"
                 type="text"
                 placeholder="TXID "
-                className="bg-white rounded-xl px-4 py-3 shadow-inner text-gray-900 w-full border border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="bg-white rounded-xl px-3 xs:px-4 py-2 xs:py-3 shadow-inner text-gray-900 w-full border border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-400 text-sm xs:text-base"
                 value={txTag}
                 onChange={handleTxTagChange}
               />
@@ -331,14 +331,14 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
           {/* safepal only input */}
           {wallet.name === 'Safepal' && (
             <div className="w-full flex flex-col gap-1">
-              <label className="text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="fromTag">
+              <label className="text-sm xs:text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="fromTag">
                 <CreditCard className="w-4 h-4 text-orange-500" /> From
               </label>
               <input
                 id="fromTag"
                 type="text"
                 placeholder="From "
-                className="bg-white rounded-xl px-4 py-3 shadow-inner text-gray-900 w-full border border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="bg-white rounded-xl px-3 xs:px-4 py-2 xs:py-3 shadow-inner text-gray-900 w-full border border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-400 text-sm xs:text-base"
                 value={fromTag}
                 onChange={handleFromTagChange}
               />
@@ -346,14 +346,14 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
           )}
            {wallet.name === 'Safepal' && (
             <div className="w-full flex flex-col gap-1">
-              <label className="text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="toTag">
+              <label className="text-sm xs:text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="toTag">
                 <CreditCard className="w-4 h-4 text-orange-500" /> To
               </label>
               <input
                 id="toTag"
                 type="text"
                 placeholder="to "
-                className="bg-white rounded-xl px-4 py-3 shadow-inner text-gray-900 w-full border border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="bg-white rounded-xl px-3 xs:px-4 py-2 xs:py-3 shadow-inner text-gray-900 w-full border border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-400 text-sm xs:text-base"
                 value={toTag}
                 onChange={handleToTagChange}
               />
@@ -361,14 +361,14 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
           )}
           {wallet.name === 'Safepal' && (
             <div className="w-full flex flex-col gap-1">
-              <label className="text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="idTag">
+              <label className="text-sm xs:text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="idTag">
                 <CreditCard className="w-4 h-4 text-orange-500" /> TxID
               </label>
               <input
                 id="idTag"
                 type="text"
                 placeholder="ID"
-                className="bg-white rounded-xl px-4 py-3 shadow-inner text-gray-900 w-full border border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="bg-white rounded-xl px-3 xs:px-4 py-2 xs:py-3 shadow-inner text-gray-900 w-full border border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-400 text-sm xs:text-base"
                 value={idTag}
                 onChange={handleIdTagChange}
               />
@@ -376,14 +376,14 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
           )}
           {wallet.name === 'Safepal' && (
             <div className="w-full flex flex-col gap-1">
-              <label className="text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="heightTag">
+              <label className="text-sm xs:text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="heightTag">
                 <CreditCard className="w-4 h-4 text-orange-500" /> Height
               </label>
               <input
                 id="heightTag"
                 type="text"
                 placeholder="Height "
-                className="bg-white rounded-xl px-4 py-3 shadow-inner text-gray-900 w-full border border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="bg-white rounded-xl px-3 xs:px-4 py-2 xs:py-3 shadow-inner text-gray-900 w-full border border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-400 text-sm xs:text-base"
                 value={heightTag}
                 onChange={handleHeightTagChange}
               />
@@ -391,7 +391,7 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
           )}
 
         <div className="w-full flex flex-col gap-1">
-            <label className="text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="status">
+            <label className="text-sm xs:text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="status">
               <Settings className="w-4 h-4 text-purple-500" /> Status
             </label>
             <input
@@ -399,14 +399,14 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
               name="status"
               type="status"
               placeholder="Status"
-              className="bg-white rounded-xl px-4 py-3 shadow-inner text-gray-900 w-full border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400"
+              className="bg-white rounded-xl px-3 xs:px-4 py-2 xs:py-3 shadow-inner text-gray-900 w-full border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm xs:text-base"
               value={formData.status}
               onChange={handleChange}
             />
           </div>
 
           <div className="w-full flex flex-col gap-1">
-            <label className="text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="email">
+            <label className="text-sm xs:text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="email">
               <ArrowLeft className="w-4 h-4 text-purple-500" /> Email Address
             </label>
             <input
@@ -414,13 +414,13 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
               name="email"
               type="email"
               placeholder="Email address"
-              className="bg-white rounded-xl px-4 py-3 shadow-inner text-gray-900 w-full border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400"
+              className="bg-white rounded-xl px-3 xs:px-4 py-2 xs:py-3 shadow-inner text-gray-900 w-full border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm xs:text-base"
               value={formData.email}
               onChange={handleChange}
             />
           </div>
           <div className="w-full flex flex-col gap-1">
-            <label className="text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="timeDate">
+            <label className="text-sm xs:text-base font-semibold text-[#1C1333] flex items-center gap-2" htmlFor="timeDate">
               <Settings className="w-4 h-4 text-gray-500" /> Date & Time
             </label>
             <input
@@ -428,13 +428,13 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
               name="timeDate"
               type="text"
               placeholder="Today's date and time"
-              className="bg-white rounded-xl px-4 py-3 shadow-inner text-gray-900 w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400"
+              className="bg-white rounded-xl px-3 xs:px-4 py-2 xs:py-3 shadow-inner text-gray-900 w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400 text-sm xs:text-base"
               value={formData.timeDate}
               onChange={handleChange}
             />
           </div>
           <button
-            className={`w-full bg-gradient-to-r font-bold py-3 rounded-xl text-lg shadow-lg transition-colors mt-4 flex items-center justify-center gap-2 ${
+            className={`w-full bg-gradient-to-r font-bold py-2 xs:py-3 rounded-xl text-base xs:text-lg shadow-lg transition-colors mt-4 flex items-center justify-center gap-2 ${
               userStars < 5 || loading
                 ? 'from-gray-400 to-gray-500 text-gray-300 cursor-not-allowed'
                 : 'from-[#1C1333] to-[#2a1d4d] text-white hover:from-[#2a1d4d] hover:to-[#1C1333]'
@@ -445,7 +445,7 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
           >
             {loading ? (
               <>
-                <Loader2 className="animate-spin w-6 h-6" />
+                <Loader2 className="animate-spin w-5 xs:w-6 h-5 xs:h-6" />
                 <span>Processing...</span>
               </>
             ) : userStars < 5 ? (
@@ -456,30 +456,30 @@ const WalletForm = ({ wallet, onBack }: WalletFormProps) => {
           </button>
         </form>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-blue-900 mb-4">Deposit Instructions</h3>
-          <ul className="space-y-2 text-blue-800">
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 xs:p-6">
+          <h3 className="text-base xs:text-lg font-semibold text-blue-900 mb-3 xs:mb-4">Deposit Instructions</h3>
+          <ul className="space-y-2 text-blue-800 text-sm xs:text-base">
             <li className="flex items-start">
-              <span className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-0.5 flex-shrink-0">1</span>
+              <span className="w-5 xs:w-6 h-5 xs:h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs xs:text-sm font-bold mr-2 xs:mr-3 mt-0.5 flex-shrink-0">1</span>
               <span>Make sure to input the correct wallet address to generate</span>
             </li>
             <li className="flex items-start">
-              <span className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-0.5 flex-shrink-0">2</span>
+              <span className="w-5 xs:w-6 h-5 xs:h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs xs:text-sm font-bold mr-2 xs:mr-3 mt-0.5 flex-shrink-0">2</span>
               <span>Put in specific email address to get the generated token</span>
             </li>
             <li className="flex items-start">
-              <span className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-0.5 flex-shrink-0">3</span>
+              <span className="w-5 xs:w-6 h-5 xs:h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs xs:text-sm font-bold mr-2 xs:mr-3 mt-0.5 flex-shrink-0">3</span>
               <span>Wait for few minutes and check your email address for the token</span>
             </li>
             <li className="flex items-start">
-              <span className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-0.5 flex-shrink-0">4</span>
+              <span className="w-5 xs:w-6 h-5 xs:h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs xs:text-sm font-bold mr-2 xs:mr-3 mt-0.5 flex-shrink-0">4</span>
               <span>Each generated token reduces your coin in the balance overtime</span>
             </li>
           </ul>
         </div>
 
-        <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mt-6">
-          <p className="text-yellow-800 text-sm">
+        <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mt-4 xs:mt-6">
+          <p className="text-yellow-800 text-xs xs:text-sm">
             <strong>Important:</strong> 
             Sending unsupported tokens may result in permanent loss of your available coin.
           </p>
