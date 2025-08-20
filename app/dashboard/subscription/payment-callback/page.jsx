@@ -1,11 +1,14 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Loader2, CheckCircle, XCircle, ArrowLeft } from 'lucide-react';
 import apiRequest from '../../../lib/apiRequest';
 
+// Prevent static generation for this page since it uses dynamic search params
+export const dynamic = 'force-dynamic';
 
-const PaymentCallback = () => {
+
+const PaymentCallbackContent = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [status, setStatus] = useState('loading');
@@ -106,6 +109,22 @@ const PaymentCallback = () => {
         )}
       </div>
     </div>
+  );
+};
+
+const PaymentCallback = () => {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center p-2 xs:p-4">
+        <div className="bg-white rounded-2xl shadow-xl p-4 xs:p-8 max-w-md w-full text-center">
+          <Loader2 className="w-10 xs:w-16 h-10 xs:h-16 text-blue-500 animate-spin mx-auto mb-2 xs:mb-4" />
+          <h2 className="text-lg xs:text-2xl font-bold text-gray-900 mb-1 xs:mb-2">Loading...</h2>
+          <p className="text-gray-600 text-xs xs:text-base">Please wait while we load the payment status...</p>
+        </div>
+      </div>
+    }>
+      <PaymentCallbackContent />
+    </Suspense>
   );
 };
 

@@ -1,11 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import apiRequest from "../lib/apiRequest";
 
-const Page = () => {
+// Prevent static generation for this page since it uses dynamic search params
+export const dynamic = 'force-dynamic';
+
+const NewPasswordContent = () => {
   const searchParams = useSearchParams();
   const email = searchParams.get('email') || '';
   const [newPassword, setNewPassword] = useState("");
@@ -124,6 +127,26 @@ const Page = () => {
         </form>
       </div>
     </div>
+  );
+};
+
+const Page = () => {
+  return (
+    <Suspense fallback={
+      <div className="flex flex-col md:flex-row h-screen">
+        <div className="bg-[#1C1333] w-full md:w-[40%] flex flex-col items-center justify-center gap-8 p-6">
+          <h1 className="text-2xl text-white mb-4 font-bold">CRYPTOTOKEN</h1>
+        </div>
+        <div className="bg-white w-full md:w-[60%] flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto mb-4"></div>
+            <p>Loading...</p>
+          </div>
+        </div>
+      </div>
+    }>
+      <NewPasswordContent />
+    </Suspense>
   );
 };
 

@@ -1,10 +1,13 @@
 'use client';
 import { useRouter, useSearchParams } from "next/navigation"
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import apiRequest from "../lib/apiRequest";
 
+// Prevent static generation for this page since it uses dynamic search params
+export const dynamic = 'force-dynamic';
 
-export default function VerifyOTP() {
+
+function VerifyOTPContent() {
     const searchParams = useSearchParams();
     const email = searchParams.get('email') || '';
     const [otp, setOtp] = useState('');
@@ -55,4 +58,19 @@ export default function VerifyOTP() {
       </div>
     </div>
   )
+}
+
+export default function VerifyOTP() {
+  return (
+    <Suspense fallback={
+      <div className="flex flex-col justify-center items-center h-screen px-4">
+        <div className="w-full max-w-md space-y-4 xs:space-y-6">
+          <h1 className="text-xl xs:text-2xl font-bold text-center mb-4 xs:mb-6">Loading...</h1>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto"></div>
+        </div>
+      </div>
+    }>
+      <VerifyOTPContent />
+    </Suspense>
+  );
 }
