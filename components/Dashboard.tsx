@@ -279,7 +279,7 @@ const Dashboard = () => {
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
               <div className="border-b border-gray-100 pb-4 mb-4">
                 <h5 className="text-green-600 text-sm font-medium">
-                  Refer & Earn 2% of your referral's deposits.
+                  Refer & Earn 2% of your referral&apos;s deposits.
                 </h5>
               </div>
               <div className="mb-4">

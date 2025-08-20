@@ -2,6 +2,7 @@
 
 import { useContext, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import apiRequest from '../lib/apiRequest';
 
 const Page = () => {
@@ -34,10 +35,12 @@ const Page = () => {
       {/* Left Side */}
       <div className="bg-[#1C1333] w-full md:w-[40%] flex flex-col items-center justify-center gap-8 p-6">
         <h1 className="text-2xl text-white mb-4 font-bold">CRYPTOTOKEN</h1>
-        <img
+        <Image
           className="w-[20%] max-w-[120px]"
           src="/image 4.png"
           alt="Crypto Token"
+          width={120}
+          height={120}
         />
         <p className="text-white text-center text-base">
           Easily create a token without any <br />
