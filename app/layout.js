@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${poppins.variable} antialiased bg-background text-foreground`}>
         <AuthContextProvider>
-          <div className="min-h-screen w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-8 flex flex-col">
+          <div className="min-h-screen w-full">
             {children}
           </div>
         </AuthContextProvider>
